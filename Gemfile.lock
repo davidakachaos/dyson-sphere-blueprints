@@ -110,6 +110,9 @@ GEM
     bootsnap (1.7.2)
       msgpack (~> 1.0)
     builder (3.2.4)
+    bullet (6.1.4)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.1.3)
     capybara (3.35.3)
       addressable
@@ -199,12 +202,6 @@ GEM
       mimemagic (~> 0.3.2)
     memory_profiler (1.0.0)
     method_source (1.0.0)
-<<<<<<< HEAD
-    mimemagic (0.3.10)
-      nokogiri (~> 1)
-      rake
-=======
->>>>>>> 53c88a0 (Fixed mimemagic issue)
     mini_histogram (0.3.1)
     mini_magick (4.11.0)
     mini_mime (1.0.2)
@@ -428,6 +425,7 @@ DEPENDENCIES
   awesome_print
   aws-sdk-s3 (~> 1.14)
   bootsnap (>= 1.4.4)
+  bullet
   byebug
   capybara (>= 3.26)
   derailed_benchmarks

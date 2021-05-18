@@ -42,14 +42,6 @@ gem "pg_search"
 gem "omniauth-rails_csrf_protection"
 gem "omniauth-discord"
 
-<<<<<<< HEAD
-gem "aws-sdk-s3", "~> 1.14"
-gem "shrine", "~> 3.3"
-gem "image_processing", "~> 1.10"
-gem "fastimage"
-gem "marcel"
-gem "dsp_blueprint_parser", "~> 0.1"
-=======
 gem "aws-sdk-s3", '~> 1.14'
 gem 'shrine', '~> 3.3'
 gem 'image_processing', '~> 1.10'
@@ -61,7 +53,6 @@ gem 'fastimage'
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 
 gem 'marcel'
->>>>>>> 53c88a0 (Fixed mimemagic issue)
 
 group :development, :test do
   gem "pry-byebug"
@@ -83,11 +74,15 @@ group :development do
   gem "spring"
   gem "memory_profiler"
   gem "derailed_benchmarks"
+<<<<<<< HEAD
 
   # Static code analyzer
   gem "rubocop", "1.19.1"
   gem "rubocop-performance", "1.11.5"
   gem "rubocop-rails", "2.11.3"
+=======
+  gem "bullet"
+>>>>>>> 9f6e67c (Added Bullet to debug queries)
 end
 
 group :test do
