@@ -10,6 +10,13 @@ GIT
       responders
       warden (~> 1.2.3)
 
+GIT
+  remote: https://github.com/mimemagicrb/mimemagic.git
+  revision: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
+  ref: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
+  specs:
+    mimemagic (0.3.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -192,9 +199,12 @@ GEM
       mimemagic (~> 0.3.2)
     memory_profiler (1.0.0)
     method_source (1.0.0)
+<<<<<<< HEAD
     mimemagic (0.3.10)
       nokogiri (~> 1)
       rake
+=======
+>>>>>>> 53c88a0 (Fixed mimemagic issue)
     mini_histogram (0.3.1)
     mini_magick (4.11.0)
     mini_mime (1.0.2)
@@ -433,6 +443,7 @@ DEPENDENCIES
   listen (~> 3.3)
   marcel
   memory_profiler
+  mimemagic!
   omniauth-discord
   omniauth-rails_csrf_protection
   pg (~> 1.1)
@@ -470,4 +481,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.14
+   2.2.17
