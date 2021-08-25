@@ -78,7 +78,6 @@ group :development do
   gem "rubocop", "1.19.1"
   gem "rubocop-performance", "1.11.5"
   gem "rubocop-rails", "2.11.3"
-  gem "bullet"
 end
 
 group :test do
