@@ -1,22 +1,33 @@
 require "shrine"
-require "shrine/storage/s3"
 
-s3_options = {
-  bucket: ENV["AWS_S3_BUCKET"],
-  access_key_id: ENV["AWS_S3_ACCESS_ID_KEY"],
-  secret_access_key: ENV["AWS_S3_ACCESS_SECRET_KEY"],
-  region: ENV["AWS_S3_REGION"],
-}
+if !Rails.env.development? and !Rails.env.test?
+  require "shrine/storage/s3"
+  s3_options = {
+    bucket: ENV["AWS_S3_BUCKET"],
+    access_key_id: ENV["AWS_S3_ACCESS_ID_KEY"],
+    secret_access_key: ENV["AWS_S3_ACCESS_SECRET_KEY"],
+    region: ENV["AWS_S3_REGION"],
+  }
 
 if Rails.env.development? && ENV["AWS_S3_ENDPOINT"]
   s3_options[:endpoint] = ENV["AWS_S3_ENDPOINT"]
   s3_options[:force_path_style] = true
 end
 
-Shrine.storages = {
-  cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
-  store: Shrine::Storage::S3.new(**s3_options),
-}
+if Rails.env.production?
+  Shrine.storages = {
+    cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
+    store: Shrine::Storage::S3.new(**s3_options),
+  }
+  Shrine.plugin :url_options, store: { host: ENV["AWS_CLOUDFRONT_URL"] }
+else
+  require "shrine/storage/file_system"
+  Shrine.storages = {
+    cache: Shrine::Storage::FileSystem.new("public", prefix: "uploads/cache"), # temporary
+    store: Shrine::Storage::FileSystem.new("public", prefix: "uploads"),       # permanent
+  }
+  Shrine.plugin :url_options
+end if
 
 Shrine.plugin :activerecord
 Shrine.plugin :instrumentation
@@ -25,7 +36,7 @@ Shrine.plugin :cached_attachment_data
 Shrine.plugin :restore_cached_data
 Shrine.plugin :derivatives
 Shrine.plugin :derivation_endpoint, secret_key: Rails.application.secret_key_base
-Shrine.plugin :url_options, store: { host: ENV["AWS_CLOUDFRONT_URL"] }
+
 
 Shrine.plugin :presign_endpoint, presign_options: lambda { |request|
   filename = request.params["filename"]

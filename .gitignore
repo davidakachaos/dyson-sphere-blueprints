@@ -23,6 +23,7 @@
 !/storage/.keep
 
 /public/assets
+/public/uploads
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
@@ -40,6 +41,7 @@ yarn-debug.log*
 *.swp
 .DS_Store
 /derailed/*
+<<<<<<< HEAD
 
 # Ignore Jetbrains IDE config
 /.idea/
@@ -51,3 +53,6 @@ localstack/data
 
 # Do not ignore .env.sample
 !.env.sample
+=======
+.bin
+>>>>>>> 2f44aac (Adding some RSpec tests - WIP)

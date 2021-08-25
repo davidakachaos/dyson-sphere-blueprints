@@ -15,10 +15,15 @@ class PagesController < ApplicationController
     @filter_mod = @mods.first
 
     @blueprints = policy_scope(Blueprint)
+      .unscoped
       .joins(:collection)
       .where(collection: { type: "Public" })
+<<<<<<< HEAD
       .where(mod_id: @filters[:mod_id]) # TODO: Probably remove all other mods than basegame
       .includes(:collection)
+=======
+      .includes(:user, collection: [:user])
+>>>>>>> 2f44aac (Adding some RSpec tests - WIP)
       .order(created_at: :desc)
       .page(params[:page])
   end

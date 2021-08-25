@@ -74,15 +74,11 @@ group :development do
   gem "spring"
   gem "memory_profiler"
   gem "derailed_benchmarks"
-<<<<<<< HEAD
-
   # Static code analyzer
   gem "rubocop", "1.19.1"
   gem "rubocop-performance", "1.11.5"
   gem "rubocop-rails", "2.11.3"
-=======
   gem "bullet"
->>>>>>> 9f6e67c (Added Bullet to debug queries)
 end
 
 group :test do
@@ -104,3 +100,10 @@ end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "sys-proctable", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "webrick", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "bullet", groups: [:development, :test]
+
+gem 'rspec-rails', group: [:development, :test]
+gem 'shoulda-matchers', group: [:test]
+gem 'rexml', group: [:test]
+gem 'factory_girl_rails', '~> 4.0', group: [:test]
+gem 'ffaker', group: [:test]
