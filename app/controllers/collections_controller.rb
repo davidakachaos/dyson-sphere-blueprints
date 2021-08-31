@@ -92,7 +92,7 @@ class CollectionsController < ApplicationController
       zip_data = File.read(temp_file.path)
       send_data(zip_data, type: "application/zip", disposition: "attachment", filename: filename)
     rescue StandardError => e
-      puts e # Still log an error if there is one
+      Rails.logger.error e.inspect # Still log an error if there is one
     ensure # important steps below
       temp_file.close
       temp_file.unlink
